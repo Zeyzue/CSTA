@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Diary | Lloyd Jacob A. Mendoza</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    backdrop-filter: blur(10px);
+    background: rgba(2,6,23,0.7);
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+}
+
+header h1 {
+    font-size: 20px;
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+nav a {
+    color: #cbd5f5;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 70px 20px 30px;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+.hero p {
+    color: #94a3b8;
+    margin-top: 10px;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+/* SEMESTER CARD */
+.semester {
+    background: rgba(2,6,23,0.6);
+    border: 1px solid #1e293b;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.semester:hover {
+    border-color: #38bdf8;
+}
+
+/* SUMMARY */
+.semester > summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #38bdf8;
+    font-size: 18px;
+}
+
+/* ENTRY WRAPPER */
+.entries {
+    margin-top: 15px;
+}
+
+/* ENTRY */
+.entry {
+    margin-top: 12px;
+    padding: 15px;
+    border-left: 3px solid #38bdf8;
+    background: rgba(15,23,42,0.6);
+    border-radius: 8px;
+}
+
+.entry summary {
+    font-size: 16px;
+    color: #e2e8f0;
+    cursor: pointer;
+}
+
+.entry p {
+    margin-top: 10px;
+    color: #cbd5f5;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💻 Lloyd Jacob A. Mendoza</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="diary.html">Diary</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>📖 My Diary</h2>
+    <p>A timeline of my journey, struggles, and growth in coding and college life.</p>
+</section>
+
+<div class="container">
+
+    <!-- 1ST YEAR 1ST SEM -->
+    <details class="semester">
+        <summary>📚 1st Year 1st Semester (2024–2025)</summary>
+
+        <div class="entries">
+
+            <details class="entry">
+                <summary>📅 My First Day — August 2024</summary>
+                <p>
+                    My first day in college was both exciting and nerve-wracking. I met new classmates,
+                    explored a new environment, and realized that IT would not be easy. I had little
+                    knowledge in coding, but I knew this was the start of something important.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Learning to Code</summary>
+                <p>
+                    Learning programming was very challenging at first. Understanding logic and writing
+                    code on my own took time. I struggled a lot, especially when errors appeared and I
+                    didn’t know how to fix them. Still, I kept practicing and slowly improved.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Exams & Pressure</summary>
+                <p>
+                    Exams were stressful and required deep understanding. I spent long nights reviewing
+                    and practicing. It was exhausting, but it helped me become more disciplined.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Friends & IT Week</summary>
+                <p>
+                    I met friends who made college life more enjoyable. IT Week was a great experience—
+                    fun, exciting, and a break from academic pressure.
+                </p>
+            </details>
+
+        </div>
+    </details>
+
+    <!-- 1ST YEAR 2ND SEM -->
+    <details class="semester">
+        <summary>📚 1st Year 2nd Semester (2024–2025)</summary>
+
+        <div class="entries">
+
+            <details class="entry">
+                <summary>📅 New Semester</summary>
+                <p>
+                    I entered this semester more confident. I already understood basic coding, but
+                    challenges were still there, especially with harder topics.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Continuous Struggles</summary>
+                <p>
+                    Debugging and solving problems still took a lot of time. I relied heavily on
+                    self-learning, watching tutorials, and practicing alone.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Group Activities</summary>
+                <p>
+                    Group works helped me improve teamwork and communication skills. It wasn’t always
+                    easy, but it taught me how to work with others.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Progress</summary>
+                <p>
+                    I saw my growth this semester. I became more confident writing code and solving
+                    problems compared to before.
+                </p>
+            </details>
+
+        </div>
+    </details>
+
+    <!-- 2ND YEAR 1ST SEM -->
+    <details class="semester">
+        <summary>📚 2nd Year 1st Semester (2025–2026)</summary>
+
+        <div class="entries">
+
+            <details class="entry">
+                <summary>📅 Leveling Up</summary>
+                <p>
+                    Subjects became more advanced and required deeper understanding. Coding was harder,
+                    but I was more prepared and determined to improve.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Independent Learning</summary>
+                <p>
+                    I spent more time coding on my own, practicing and building small projects.
+                    It was difficult, but it helped me grow faster.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Pressure</summary>
+                <p>
+                    Deadlines and requirements became overwhelming at times, but I learned how to
+                    manage my time better.
+                </p>
+            </details>
+
+        </div>
+    </details>
+
+    <!-- 2ND YEAR 2ND SEM -->
+    <details class="semester">
+        <summary>📚 2nd Year 2nd Semester (2025–2026)</summary>
+
+        <div class="entries">
+
+            <details class="entry">
+                <summary>📅 Consistency</summary>
+                <p>
+                    Coding became part of my routine. I kept pushing myself to improve even when it was hard.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Motivation</summary>
+                <p>
+                    My girlfriend Alshlley became one of my biggest inspirations. She motivates me to
+                    work harder, stay focused, and give more effort in my academics.
+                </p>
+            </details>
+
+            <details class="entry">
+                <summary>📅 Looking Forward</summary>
+                <p>
+                    I know there is still a lot to learn, but I am determined to continue growing
+                    and improving my skills as a developer.
+                </p>
+            </details>
+
+        </div>
+    </details>
+
+</div>
+
+<footer>
+    © 2026 Lloyd Jacob A. Mendoza | Built with passion 💙
+</footer>
+
+<script>
+document.querySelectorAll('.semester').forEach(section => {
+    section.addEventListener('toggle', () => {
+        if (!section.open) {
+            section.querySelectorAll('.entry').forEach(d => d.open = false);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

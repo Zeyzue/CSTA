@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery | Lloyd Jacob A. Mendoza</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    backdrop-filter: blur(10px);
+    background: rgba(2,6,23,0.7);
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 20px;
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+nav a {
+    color: #cbd5f5;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.hero h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #94a3b8;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding-bottom: 60px;
+}
+
+/* GALLERY GRID */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+/* CARD STYLE (same vibe as index) */
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+    background: rgba(2,6,23,0.6);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+}
+
+/* IMAGE */
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(2,6,23,0.7);
+    padding: 10px;
+    text-align: center;
+    color: #38bdf8;
+    font-size: 14px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 999;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    margin: 5% auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.lightbox:target {
+    display: block;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>💻 Lloyd Jacob A. Mendoza</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="diary.html">Diary</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>🖼️ My Gallery</h2>
+    <p>Moments, memories, and milestones from my journey as an IT student.</p>
+</section>
+
+<section class="container">
+
+<div class="gallery">
+
+    <a href="#img1" class="gallery-item">
+        <img src="mendozalogo.png">
+        <div class="overlay">Logo Design</div>
+    </a>
+
+    <a href="#img2" class="gallery-item">
+        <img src="pic1.jpg">
+        <div class="overlay">School Activity</div>
+    </a>
+
+    <a href="#img3" class="gallery-item">
+        <img src="pic2.jpg">
+        <div class="overlay">Classmates</div>
+    </a>
+
+    <a href="#img4" class="gallery-item">
+        <img src="pic3.jpg">
+        <div class="overlay">Intrams</div>
+    </a>
+
+    <a href="#img5" class="gallery-item">
+        <img src="pic4.jpg">
+        <div class="overlay">Scrabble</div>
+    </a>
+
+    <a href="#img6" class="gallery-item">
+        <img src="menash.jpg">
+        <div class="overlay">Girlfriend</div>
+    </a>
+
+    <a href="#img7" class="gallery-item">
+        <img src="5cert.jpg">
+        <div class="overlay">Certificates</div>
+    </a>
+
+    <a href="#img8" class="gallery-item">
+        <img src="gfjabi.jpg">
+        <div class="overlay">Memories</div>
+    </a>
+
+    <a href="#img9" class="gallery-item">
+        <img src="gf2.jpg">
+        <div class="overlay">Girlfriend</div>
+    </a>
+
+    <a href="#img10" class="gallery-item">
+        <img src="datamining.jpg">
+        <div class="overlay">Data Mining Project</div>
+    </a>
+
+</div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div id="img1" class="lightbox"><a href="#" class="close">&times;</a><img src="mendozalogo.png"></div>
+<div id="img2" class="lightbox"><a href="#" class="close">&times;</a><img src="pic1.jpg"></div>
+<div id="img3" class="lightbox"><a href="#" class="close">&times;</a><img src="pic2.jpg"></div>
+<div id="img4" class="lightbox"><a href="#" class="close">&times;</a><img src="pic3.jpg"></div>
+<div id="img5" class="lightbox"><a href="#" class="close">&times;</a><img src="pic4.jpg"></div>
+<div id="img6" class="lightbox"><a href="#" class="close">&times;</a><img src="menash.jpg"></div>
+<div id="img7" class="lightbox"><a href="#" class="close">&times;</a><img src="5cert.jpg"></div>
+<div id="img8" class="lightbox"><a href="#" class="close">&times;</a><img src="gfjabi.jpg"></div>
+<div id="img9" class="lightbox"><a href="#" class="close">&times;</a><img src="gf2.jpg"></div>
+<div id="img10" class="lightbox"><a href="#" class="close">&times;</a><img src="datamining.jpg"></div>
+
+<footer>
+    © 2026 Lloyd Jacob A. Mendoza | Built with passion 💙
+</footer>
+
+</body>
+</html>
