@@ -17,6 +17,13 @@ body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #0f172a, #020617);
     color: #e2e8f0;
+
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.show {
+    opacity: 1;
 }
 
 /* HEADER */
@@ -36,30 +43,48 @@ header {
 header h1 {
     font-size: 20px;
     color: #38bdf8;
-    font-weight: 700;
 }
 
+/* NAV ANIMATION */
 nav a {
     color: #cbd5f5;
     margin-left: 20px;
     text-decoration: none;
-    font-size: 14px;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #38bdf8;
+    left: 0;
+    bottom: -5px;
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #38bdf8;
+nav a:hover::after {
+    width: 100%;
 }
 
 /* HERO */
 .hero {
     text-align: center;
     padding: 80px 20px 40px;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+.hero.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero h2 {
     font-size: 42px;
-    margin-bottom: 10px;
 }
 
 .hero p {
@@ -82,11 +107,19 @@ nav a:hover {
     padding: 40px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     backdrop-filter: blur(10px);
-    transition: 0.3s;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 0.8s ease;
+}
+
+.card.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.01);
     border-color: #38bdf8;
 }
 
@@ -103,6 +136,17 @@ nav a:hover {
     border-radius: 50%;
     border: 3px solid #38bdf8;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    transition: transform 0.3s;
+}
+
+/* PARALLAX */
+.parallax {
+    transition: transform 0.2s linear;
+}
+
+.profile img:hover {
+    transform: scale(1.1);
 }
 
 /* SECTIONS */
@@ -110,7 +154,6 @@ nav a:hover {
     margin-top: 25px;
     margin-bottom: 10px;
     color: #38bdf8;
-    font-size: 20px;
 }
 
 .card p {
@@ -123,7 +166,6 @@ nav a:hover {
 .info {
     display: grid;
     gap: 10px;
-    margin-top: 10px;
 }
 
 .info p {
@@ -131,6 +173,15 @@ nav a:hover {
     padding: 12px;
     border-radius: 8px;
     border-left: 3px solid #38bdf8;
+
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: 0.6s;
+}
+
+.info p.active {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* HIGHLIGHT */
@@ -139,6 +190,15 @@ nav a:hover {
     margin-top: 25px;
     color: #22c55e;
     font-weight: 600;
+
+    opacity: 0;
+    transform: scale(0.9);
+    transition: 0.6s;
+}
+
+.highlight.active {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* FOOTER */
@@ -152,11 +212,6 @@ footer {
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        gap: 10px;
-    }
-
-    nav a {
-        margin: 0 10px;
     }
 
     .hero h2 {
@@ -193,7 +248,7 @@ footer {
     <div class="card">
 
         <div class="profile">
-            <img src="me1x1.jpg" alt="My Photo">
+            <img src="me1x1.jpg" class="parallax">
         </div>
 
         <h3>✨ Personal Information</h3>
@@ -218,7 +273,7 @@ footer {
         </p>
 
         <p>
-            My journey is not just about academics it is about discipline,
+            My journey is not just about academics—it is about discipline,
             consistency, and continuous learning in the field of technology.
         </p>
 
@@ -233,6 +288,39 @@ footer {
 <footer>
     © 2026 Lloyd Jacob A. Mendoza | Built with passion 💙
 </footer>
+
+<script>
+// PAGE FADE
+window.addEventListener("load", () => {
+    document.body.classList.add("show");
+});
+
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(
+    ".hero, .card, .info p, .highlight"
+);
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add("active");
+            }, index * 120);
+        }
+    });
+}, { threshold: 0.2 });
+
+elements.forEach(el => observer.observe(el));
+
+// PARALLAX
+window.addEventListener("scroll", () => {
+    let scrolled = window.scrollY;
+
+    document.querySelectorAll(".parallax").forEach(el => {
+        el.style.transform = `translateY(${scrolled * 0.2}px)`;
+    });
+});
+</script>
 
 </body>
 </html>
