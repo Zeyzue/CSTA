@@ -17,6 +17,13 @@ body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #0f172a, #020617);
     color: #e2e8f0;
+
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.show {
+    opacity: 1;
 }
 
 /* HEADER */
@@ -44,17 +51,37 @@ nav a {
     margin-left: 20px;
     text-decoration: none;
     font-size: 14px;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #38bdf8;
+    left: 0;
+    bottom: -5px;
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #38bdf8;
+nav a:hover::after {
+    width: 100%;
 }
 
 /* HERO */
 .hero {
     text-align: center;
     padding: 80px 20px 40px;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+.hero.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero h2 {
@@ -81,7 +108,7 @@ nav a:hover {
     gap: 20px;
 }
 
-/* CARD STYLE (same vibe as index) */
+/* ITEM */
 .gallery-item {
     position: relative;
     border-radius: 15px;
@@ -89,11 +116,19 @@ nav a:hover {
     border: 1px solid #1e293b;
     background: rgba(2,6,23,0.6);
     box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    transition: 0.3s;
+    transition: 0.5s;
+
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.gallery-item.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .gallery-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     border-color: #38bdf8;
 }
 
@@ -103,6 +138,13 @@ nav a:hover {
     height: 220px;
     object-fit: cover;
     display: block;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 /* OVERLAY */
@@ -126,32 +168,39 @@ nav a:hover {
 
 /* LIGHTBOX */
 .lightbox {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
     z-index: 999;
+    padding: 20px;
+}
+
+.lightbox.active {
+    display: flex;
 }
 
 .lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    margin: 5% auto;
-    display: block;
+    max-width: 85%;
+    max-height: 85%;
     border-radius: 10px;
+    animation: pop 0.25s ease;
 }
 
-.lightbox:target {
-    display: block;
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .close {
     position: absolute;
     top: 20px;
     right: 30px;
-    font-size: 30px;
+    font-size: 35px;
     color: white;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 /* FOOTER */
@@ -159,22 +208,6 @@ footer {
     text-align: center;
     padding: 30px;
     color: #64748b;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    nav a {
-        margin: 0 10px;
-    }
-
-    .hero h2 {
-        font-size: 28px;
-    }
 }
 </style>
 </head>
@@ -201,75 +234,76 @@ footer {
 
 <div class="gallery">
 
-    <a href="#img1" class="gallery-item">
-        <img src="mendozalogo.png">
-        <div class="overlay">Logo Design</div>
-    </a>
-
-    <a href="#img2" class="gallery-item">
-        <img src="pic1.jpg">
-        <div class="overlay">School Activity</div>
-    </a>
-
-    <a href="#img3" class="gallery-item">
-        <img src="pic2.jpg">
-        <div class="overlay">Classmates</div>
-    </a>
-
-    <a href="#img4" class="gallery-item">
-        <img src="pic3.jpg">
-        <div class="overlay">Intrams</div>
-    </a>
-
-    <a href="#img5" class="gallery-item">
-        <img src="pic4.jpg">
-        <div class="overlay">Scrabble</div>
-    </a>
-
-    <a href="#img6" class="gallery-item">
-        <img src="menash.jpg">
-        <div class="overlay">Girlfriend</div>
-    </a>
-
-    <a href="#img7" class="gallery-item">
-        <img src="5cert.jpg">
-        <div class="overlay">Certificates</div>
-    </a>
-
-    <a href="#img8" class="gallery-item">
-        <img src="gfjabi.jpg">
-        <div class="overlay">Memories</div>
-    </a>
-
-    <a href="#img9" class="gallery-item">
-        <img src="gf2.jpg">
-        <div class="overlay">Girlfriend</div>
-    </a>
-
-    <a href="#img10" class="gallery-item">
-        <img src="datamining.jpg">
-        <div class="overlay">Data Mining Project</div>
-    </a>
+    <div class="gallery-item"><img src="mendozalogo.png"><div class="overlay">Logo Design</div></div>
+    <div class="gallery-item"><img src="pic1.jpg"><div class="overlay">School Activity</div></div>
+    <div class="gallery-item"><img src="pic2.jpg"><div class="overlay">Classmates</div></div>
+    <div class="gallery-item"><img src="pic3.jpg"><div class="overlay">Intrams</div></div>
+    <div class="gallery-item"><img src="pic4.jpg"><div class="overlay">Scrabble</div></div>
+    <div class="gallery-item"><img src="menash.jpg"><div class="overlay">Girlfriend</div></div>
+    <div class="gallery-item"><img src="5cert.jpg"><div class="overlay">Certificates</div></div>
+    <div class="gallery-item"><img src="gfjabi.jpg"><div class="overlay">Memories</div></div>
+    <div class="gallery-item"><img src="gf2.jpg"><div class="overlay">Girlfriend</div></div>
+    <div class="gallery-item"><img src="datamining.jpg"><div class="overlay">Data Mining Project</div></div>
 
 </div>
 
 </section>
 
 <!-- LIGHTBOX -->
-<div id="img1" class="lightbox"><a href="#" class="close">&times;</a><img src="mendozalogo.png"></div>
-<div id="img2" class="lightbox"><a href="#" class="close">&times;</a><img src="pic1.jpg"></div>
-<div id="img3" class="lightbox"><a href="#" class="close">&times;</a><img src="pic2.jpg"></div>
-<div id="img4" class="lightbox"><a href="#" class="close">&times;</a><img src="pic3.jpg"></div>
-<div id="img5" class="lightbox"><a href="#" class="close">&times;</a><img src="pic4.jpg"></div>
-<div id="img6" class="lightbox"><a href="#" class="close">&times;</a><img src="menash.jpg"></div>
-<div id="img7" class="lightbox"><a href="#" class="close">&times;</a><img src="5cert.jpg"></div>
-<div id="img8" class="lightbox"><a href="#" class="close">&times;</a><img src="gfjabi.jpg"></div>
-<div id="img9" class="lightbox"><a href="#" class="close">&times;</a><img src="gf2.jpg"></div>
-<div id="img10" class="lightbox"><a href="#" class="close">&times;</a><img src="datamining.jpg"></div>
+<div class="lightbox" id="lightbox">
+    <div class="close" id="closeBtn">&times;</div>
+    <img id="lightboxImg">
+</div>
 
 <footer>
     © 2026 Lloyd Jacob A. Mendoza | Built with passion 💙
 </footer>
+
+<script>
+// PAGE FADE IN (same as index/about)
+window.addEventListener("load", () => {
+    document.body.classList.add("show");
+});
+
+// SCROLL REVEAL (UNIFIED STYLE)
+const elements = document.querySelectorAll(".hero, .gallery-item");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
+    });
+}, { threshold: 0.2 });
+
+elements.forEach(el => observer.observe(el));
+
+// LIGHTBOX
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const closeBtn = document.getElementById("closeBtn");
+
+document.querySelectorAll(".gallery-item img").forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.classList.add("active");
+        lightboxImg.src = img.src;
+    });
+});
+
+function closeLightbox() {
+    lightbox.classList.remove("active");
+}
+
+closeBtn.addEventListener("click", closeLightbox);
+
+lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+});
+</script>
 
 </body>
 </html>
